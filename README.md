@@ -57,6 +57,12 @@ Azure Storage Account
                     |                |    |      Account    |
                     +----------------+    +-----------------+
 
+In this architecture, data sources (CSV files) are stored in an Azure Data Lake. Azure Data Factory is used to merge the CSV files into a single file, which is then loaded into an Azure SQL Database. Azure Databricks processes the data and makes predictions on stock prices, and the insights are stored in an Azure Storage Account Container.
+
+The Custom Activity in Azure Data Factory is responsible for merging the CSV files, while the Copy Activity loads the merged CSV file into the SQL Database. Azure Databricks is used for data processing, while the Azure Storage Account is used for storing the insights out of it.
+
+This architecture provides an efficient way to predict stock prices by analyzing data from various sources, while ensuring that the entire process is automated and scalable.
+
 
 ## Conclusion
-This project provides an efficient way to predict stock prices by analyzing data from various sources. The use of Azure Data Factory, Custom Activity, SQL Database, Azure Databricks, and Azure Storage Account ensures that the entire process is automated and scalable.
+This project provides an efficient way to visualize stock prices by analyzing data from various sources. The use of Azure Data Factory, Custom Activity, SQL Database, Azure Databricks, and Azure Storage Account ensures that the entire process is automated and scalable.
