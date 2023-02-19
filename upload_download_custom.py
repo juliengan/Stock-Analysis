@@ -12,21 +12,6 @@ def upload_file(source, dest):
     with open(source, 'rb') as data:
       container_client_output.upload_blob(name=dest, data=data)
 
-def upload_dir(source, dest):
-    '''
-    Upload the whole directory into the storage account
-    '''
-    prefix = '' if dest == '' else dest + '/'
-    prefix += os.path.basename(source) + '/'
-
-    for root, dirs, files in os.walk(source):
-        for name in files:
-            dir_part = os.path.relpath(root, source)
-            dir_part = '' if dir_part == '.' else dir_part + '/'
-            file_path = os.path.join(root, name)
-            blob_path = prefix + dir_part + name
-            upload_file(file_path, blob_path)
-
 def download(source, dest):
     '''
     Download the directory to a path on the local filesystem
@@ -77,11 +62,8 @@ try:
     download("input",'')
  
     amazon = pd.read_csv('AMAZON.csv')
-    print('amazon done')
     apple = pd.read_csv('APPLE.csv')
-    print('apple done')
     microsoft = pd.read_csv('MICROSOFT.csv')
-    print('microsoft done')
     google = pd.read_csv('GOOGLE.csv')
     facebook = pd.read_csv('FACEBOOK.csv')
     tesla = pd.read_csv('TESLA.csv')
