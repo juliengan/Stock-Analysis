@@ -34,5 +34,29 @@ Azure SQL Database
 Azure Databricks
 Azure Storage Account
 
+## Architecture Diagram
+
+    +---------------------+    +-----------------+     +-----------------+
+    |                     |    |                 |     |                 |
+    |   Azure Data Lake   |<---|  Azure Data     |<----|  Custom Activity|
+    |                     |    |    Factory      |     |                 |
+    +---------------------+    +-----------------+     +-----------------+
+                                    /        \
+                                   /          \
+                     +-----------------+   +----------------+
+                     |                 |   |                |
+                     |  CSV files      |   |  SQL Database  |
+                     |                 |   |                |
+                     +-----------------+   +----------------+
+                                  |                 |
+                                  |                 |
+                                  |                 |
+                    +----------------+    +-----------------+
+                    |                |    |                 |
+                    | Azure Databricks|<---|  Azure Storage  |
+                    |                |    |      Account    |
+                    +----------------+    +-----------------+
+
+
 ## Conclusion
 This project provides an efficient way to predict stock prices by analyzing data from various sources. The use of Azure Data Factory, Custom Activity, SQL Database, Azure Databricks, and Azure Storage Account ensures that the entire process is automated and scalable.
